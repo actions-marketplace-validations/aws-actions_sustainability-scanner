@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.4.0](https://github.com/aws-actions/sustainability-scanner/compare/v1.3.1...v1.4.0) (unreleased)
+## [1.4.0](https://github.com/aws-actions/sustainability-scanner/compare/v1.3.1...v1.4.0) (2026-09-23)
 
 ### Features
 
@@ -12,6 +12,11 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 - directory scans no longer overwrite the `results` output with the last scanned file; results are now consolidated into a single report with a `reports` array [#11](https://github.com/aws-actions/sustainability-scanner/issues/11)
+
+### Security
+
+- quote every argument passed to `susscanner` so a template file name containing whitespace or glob characters can no longer be split into extra arguments and make the scanner read a different file than the one found; a `rules_file` that does not exist is now an error instead of silently falling back to the default rules
+- the action now fails when `directory` does not exist or contains no `.json`/`.yaml`/`.yml` templates, instead of reporting success without scanning anything
 
 ### Maintenance
 
